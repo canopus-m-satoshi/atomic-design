@@ -1,8 +1,13 @@
+import { useContext } from 'react';
+
+import { UserContext } from '../../../providers/UserProvider';
+
 import styled from 'styled-components';
-import { isPartiallyEmittedExpression } from 'typescript';
 
 export const UserIconWithName = (props) => {
   const { image, name, isAdmin } = props;
+  const context = useContext(UserContext);
+  console.log(context);
 
   return (
     <SContainer>
