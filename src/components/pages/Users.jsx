@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-
 import { SecondryButton } from '../atoms/button/SecondryButton';
 import { SearchInput } from '../molecules/SearchInput';
 import { UserCard } from '../organisms/user/UserCard';
-import { UserContext } from '../../providers/UserProvider';
 
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
+import { userState } from '../../store/userState';
 
 const users = [...Array(10).keys()].map((val) => {
   return {
@@ -20,7 +19,9 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  // const { userInfo, setUserInfo } = useContext(UserContext);
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
   const onClickSwitch = () => setUserInfo({ isAdmin: !userInfo.isAdmin });
 
   return (
